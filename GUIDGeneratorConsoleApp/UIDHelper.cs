@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GUIDGeneratorConsoleApp
+﻿namespace GUIDGeneratorConsoleApp
 {
     public enum UIDHelperType
     {
@@ -16,6 +9,6 @@ namespace GUIDGeneratorConsoleApp
 
     public sealed class UIDHelper (UIDHelperType uidType)
     {        
-        private UIDHelperType UIDType { get; init; } = uidType;
+        public UIDHelperType UIDType { get; init; } = uidType;
     }
 }
