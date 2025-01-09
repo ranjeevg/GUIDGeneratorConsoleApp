@@ -15,11 +15,11 @@ string UIDString = String.Empty;
 List<int> possibleChoices = [0, 1, 2];
 
 var random = new Random();
-int NumOfUIDsToGenerate = random.Next(2, 6);
+int NumOfUIDsToGenerate = random.Next(3, 10);
 
 Console.WriteLine();
 Console.WriteLine($"You have chosen to generate unique identifiers of type {MyChoice.UIDType}");
-Console.WriteLine($"Out of sheer impulsiveness, we have chosen to generate {NumOfUIDsToGenerate} {MyChoice.UIDType} UIDs.");
+Console.WriteLine($"Out of sheer impulsiveness, we have chosen to generate {NumOfUIDsToGenerate} {MyChoice.UIDType}s.");
 Console.WriteLine();
 Console.WriteLine();
 
