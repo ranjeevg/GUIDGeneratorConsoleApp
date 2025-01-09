@@ -17,18 +17,18 @@ List<int> possibleChoices = [0, 1, 2];
 var random = new Random();
 int NumOfUIDsToGenerate = random.Next(3, 10);
 
-Console.WriteLine();
-Console.WriteLine($"You have chosen to generate unique identifiers of type {MyChoice.UIDType}");
-Console.WriteLine($"Out of sheer impulsiveness, we have chosen to generate {NumOfUIDsToGenerate} {MyChoice.UIDType}s.");
-Console.WriteLine();
-Console.WriteLine();
+
 
 if (!possibleChoices.Contains(choice))
-{
     Console.WriteLine($"Invalid option chosen: {choice}. Please reopen this scriptlet.");
-}
 else
 {
+    Console.WriteLine();
+    Console.WriteLine($"You have chosen to generate unique identifiers of type {MyChoice.UIDType}");
+    Console.WriteLine($"Out of sheer impulsiveness, we have chosen to generate {NumOfUIDsToGenerate} {MyChoice.UIDType}s.");
+    Console.WriteLine();
+    Console.WriteLine();
+
     for (int i = 0; i < NumOfUIDsToGenerate; i++)
     {
         switch (MyChoice.UIDType)
