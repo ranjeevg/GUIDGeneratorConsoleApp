@@ -41,7 +41,7 @@ for (int i = 0; i < NumOfUIDsToGenerate; i++)
         }
         default:
         {
-            Console.WriteLine($"Unrecognized");
+            Console.WriteLine($"Unrecognized UID type selected: {choice}");
             break;
         }
     }
