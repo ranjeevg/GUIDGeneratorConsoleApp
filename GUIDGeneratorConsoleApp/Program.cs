@@ -12,6 +12,8 @@ UIDHelper MyChoice = new(userChoice);
 
 string UIDString = String.Empty;
 
+List<int> possibleChoices = [0, 1, 2];
+
 var random = new Random();
 int NumOfUIDsToGenerate = random.Next(2, 6);
 
@@ -21,34 +23,36 @@ Console.WriteLine($"Out of sheer impulsiveness, we have chosen to generate {NumO
 Console.WriteLine();
 Console.WriteLine();
 
-for (int i = 0; i < NumOfUIDsToGenerate; i++)
+if (!possibleChoices.Contains(choice))
 {
-    switch (MyChoice.UIDType)
+    Console.WriteLine($"Invalid option chosen: {choice}. Please reopen this scriptlet.");
+}
+else
+{
+    for (int i = 0; i < NumOfUIDsToGenerate; i++)
     {
-        case UIDHelperType.GUID:
+        switch (MyChoice.UIDType)
         {
-            UIDString = Guid.NewGuid().ToString();
-            break;
+            case UIDHelperType.GUID:
+            {
+                UIDString = Guid.NewGuid().ToString();
+                break;
+            }
+            case UIDHelperType.UUID:
+            {
+                UIDString = Medo.Uuid7.NewMsSqlUniqueIdentifier().ToString();
+                break;
+            }
+            case UIDHelperType.ULID:
+            {
+                UIDString = Ulid.NewUlid().ToString();
+                break;
+            }
         }
-        case UIDHelperType.UUID:
-        {
-            UIDString = Medo.Uuid7.NewMsSqlUniqueIdentifier().ToString();
-            break;
-        }
-        case UIDHelperType.ULID:
-        {
-            UIDString = Ulid.NewUlid().ToString();
-            break;
-        }
-        default:
-        {
-            Console.WriteLine($"Unrecognized UID type selected: {choice}");
-            break;
-        }
-    }
 
-    Console.WriteLine();
-    Console.WriteLine($"Your unique identifier: \n\n{UIDString}");
+        Console.WriteLine();
+        Console.WriteLine($"Your unique identifier: \n\n{UIDString}");
+    }
 }
 
 Console.ReadLine();
