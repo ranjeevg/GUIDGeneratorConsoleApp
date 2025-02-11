@@ -20,12 +20,12 @@ int NumOfUIDsToGenerate = random.Next(3, 10);
 
 
 if (!possibleChoices.Contains(choice))
-    Console.WriteLine($"Invalid option chosen: {choice}. Please reopen this scriptlet.");
+    Console.WriteLine($"Invalid option chosen: {choice}. Please close and reopen this scriptlet.");
 else
 {
     Console.WriteLine();
     Console.WriteLine($"You have chosen to generate unique identifiers of type {MyChoice.UIDType}");
-    Console.WriteLine($"Out of sheer impulsiveness, we have chosen to generate {NumOfUIDsToGenerate} {MyChoice.UIDType}s.");
+    Console.WriteLine($"Out of sheer impulsiveness, we have chosen to generate {NumOfUIDsToGenerate} {MyChoice.UIDType}s for you.");
     Console.WriteLine();
     Console.WriteLine();
 
