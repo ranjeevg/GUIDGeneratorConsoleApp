@@ -24,7 +24,7 @@ if (!possibleChoices.Contains(choice))
 else
 {
     Console.WriteLine();
-    Console.WriteLine($"You have chosen to generate unique identifiers of type {MyChoice.UIDType}");
+    Console.WriteLine($"You have chosen to generate unique identifiers of type {MyChoice.UIDType}.");
     Console.WriteLine($"Out of sheer impulsiveness, we have chosen to generate {NumOfUIDsToGenerate} {MyChoice.UIDType}s for you.");
     Console.WriteLine();
     Console.WriteLine();
