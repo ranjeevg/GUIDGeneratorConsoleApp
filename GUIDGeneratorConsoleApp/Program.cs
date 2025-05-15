@@ -5,28 +5,54 @@ using static System.Ulid;
 Console.WriteLine("Hello, World!");
 Console.WriteLine($"Please enter a number here (1 for GUIDs, 2 for UUIDs, or 3 for ULIDs): ");
 
-int choice = Convert.ToInt32(Console.ReadLine());
+List<int> possibleChoices = [1, 2, 3];
+
+int choice;
+
+bool SuccessfullyParsed = System.Int32.TryParse(Console.ReadLine(), out choice);
+
+if (!SuccessfullyParsed || !possibleChoices.Contains(choice))
+{
+    Console.WriteLine("Unable to parse GUID type. The program will close - please reopen it and try again.");
+    Thread.Sleep(1500);
+    return;
+}
 
 UIDHelperType userChoice = (UIDHelperType)(choice);
 UIDHelper MyChoice = new(userChoice);
 
 string UIDString = String.Empty;
 
-List<int> possibleChoices = [1, 2, 3];
+// read in the number of UIDs of the specified type to create
+Console.WriteLine($"Please enter the number of {MyChoice.UIDType}s to generate: ");
 
-var random = new Random();
+// default value - in case user input fails
 int NumOfUIDsToGenerate = 5;
+SuccessfullyParsed = Int32.TryParse(Console.ReadLine(), out NumOfUIDsToGenerate);
 
+if (!SuccessfullyParsed)
+{
+    Console.WriteLine($"Unable to parse input. The program will close - please reopen it and try again.");
+    Thread.Sleep(1500);
+    return;
+}
+    
+else
+    Console.WriteLine($"{NumOfUIDsToGenerate} {MyChoice.UIDType}s generated below:");
 
 
 if (!possibleChoices.Contains(choice))
-    Console.WriteLine($"Invalid option chosen: {choice}. Please close and reopen this scriptlet.");
+{
+    Console.WriteLine($"Invalid option chosen: {choice}. The program will close - please reopen it and try again.");
+    Thread.Sleep(1500);
+    return;
+}
+
 else
 {
     Console.WriteLine();
     Console.WriteLine($"You have chosen to generate unique identifiers of type {MyChoice.UIDType}.");
     Console.WriteLine($"We have generated {NumOfUIDsToGenerate} {MyChoice.UIDType}s for you.");
-    Console.WriteLine();
     Console.WriteLine();
 
     for (int i = 0; i < NumOfUIDsToGenerate; i++)
@@ -34,26 +60,26 @@ else
         switch (MyChoice.UIDType)
         {
             case UIDHelperType.GUID:
-            {
-                UIDString = Guid.NewGuid().ToString();
-                break;
-            }
+                {
+                    UIDString = Guid.NewGuid().ToString();
+                    break;
+                }
             case UIDHelperType.UUID:
-            {
-                UIDString = Medo.Uuid7.NewMsSqlUniqueIdentifier().ToString();
-                break;
-            }
+                {
+                    UIDString = Medo.Uuid7.NewMsSqlUniqueIdentifier().ToString();
+                    break;
+                }
             case UIDHelperType.ULID:
-            {
-                UIDString = Ulid.NewUlid().ToString();
-                break;
-            }
+                {
+                    UIDString = Ulid.NewUlid().ToString();
+                    break;
+                }
         }
 
-        Console.WriteLine();
-        Console.WriteLine($"Your unique identifier: \n\n{UIDString}");
+        Console.WriteLine($"Your unique identifier: \n{UIDString}\n");
     }
 }
 
-Console.ReadLine();
+Console.WriteLine("Press any key to exit:");
+Console.ReadKey();
 
