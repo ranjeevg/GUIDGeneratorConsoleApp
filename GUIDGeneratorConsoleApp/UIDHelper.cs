@@ -2,9 +2,9 @@
 {
     public enum UIDHelperType
     {
-        GUID = 0,
-        UUID = 1,
-        ULID = 2
+        GUID = 1,
+        UUID = 2,
+        ULID = 3
     }
 
     public sealed class UIDHelper (UIDHelperType uidType)

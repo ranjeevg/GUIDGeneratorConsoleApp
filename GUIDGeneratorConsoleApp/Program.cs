@@ -3,7 +3,7 @@ using GUIDGeneratorConsoleApp;
 using static System.Ulid;
 
 Console.WriteLine("Hello, World!");
-Console.WriteLine($"Please enter a number here (0 for guids, 1 for uuids, 2 for ulids): ");
+Console.WriteLine($"Please enter a number here (1 for GUIDs, 2 for UUIDs, or 3 for ULIDs): ");
 
 int choice = Convert.ToInt32(Console.ReadLine());
 
@@ -12,10 +12,10 @@ UIDHelper MyChoice = new(userChoice);
 
 string UIDString = String.Empty;
 
-List<int> possibleChoices = [0, 1, 2];
+List<int> possibleChoices = [1, 2, 3];
 
 var random = new Random();
-int NumOfUIDsToGenerate = random.Next(3, 10);
+int NumOfUIDsToGenerate = 5;
 
 
 
@@ -25,7 +25,7 @@ else
 {
     Console.WriteLine();
     Console.WriteLine($"You have chosen to generate unique identifiers of type {MyChoice.UIDType}.");
-    Console.WriteLine($"Out of sheer impulsiveness, we have chosen to generate {NumOfUIDsToGenerate} {MyChoice.UIDType}s for you.");
+    Console.WriteLine($"We have generated {NumOfUIDsToGenerate} {MyChoice.UIDType}s for you.");
     Console.WriteLine();
     Console.WriteLine();
 
