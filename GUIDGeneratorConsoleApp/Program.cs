@@ -27,8 +27,7 @@ string UIDString = String.Empty;
 Console.WriteLine($"Please enter the number of {MyChoice.UIDType}s to generate: ");
 
 // default value - in case user input fails
-int NumOfUIDsToGenerate = 5;
-SuccessfullyParsed = Int32.TryParse(Console.ReadLine(), out NumOfUIDsToGenerate);
+SuccessfullyParsed = Int32.TryParse(Console.ReadLine(), out int NumOfUIDsToGenerate);
 
 if (!SuccessfullyParsed)
 {
@@ -36,10 +35,6 @@ if (!SuccessfullyParsed)
     Thread.Sleep(1500);
     return;
 }
-    
-else
-    Console.WriteLine($"{NumOfUIDsToGenerate} {MyChoice.UIDType}s generated below:");
-
 
 if (!possibleChoices.Contains(choice))
 {
@@ -76,7 +71,7 @@ else
                 }
         }
 
-        Console.WriteLine($"Your unique identifier: \n{UIDString}\n");
+        Console.WriteLine($"{MyChoice.UIDType} #{i + 1}: \n{UIDString}\n");
     }
 }
 
