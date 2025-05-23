@@ -77,3 +77,5 @@ else
 
 Console.WriteLine("Press any key to exit:");
 Console.ReadKey();
+
+Thread.Sleep(2500);
