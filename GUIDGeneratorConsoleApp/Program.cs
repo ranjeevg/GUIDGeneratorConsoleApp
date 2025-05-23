@@ -1,5 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using GUIDGeneratorConsoleApp;
+using System.Text;
 using static System.Ulid;
 
 Console.WriteLine("Hello, World!");
@@ -50,32 +51,49 @@ else
     Console.WriteLine($"We have generated {NumOfUIDsToGenerate} {MyChoice.UIDType}s for you.");
     Console.WriteLine();
 
+    StringBuilder UIDStringBuilder = new();
+
+    UIDStringBuilder.Append($"{NumOfUIDsToGenerate} {MyChoice.UIDType}s generated below (generated on {DateTime.Now:yyyy MMM dd, hh:mm:ss tt})")
+        .Append("\n\n");
+
     for (int i = 0; i < NumOfUIDsToGenerate; i++)
     {
         switch (MyChoice.UIDType)
         {
             case UIDHelperType.GUID:
-                {
-                    UIDString = Guid.NewGuid().ToString();
-                    break;
-                }
+            {
+                UIDString = Guid.NewGuid().ToString();
+                break;
+            }
             case UIDHelperType.UUID:
-                {
-                    UIDString = Medo.Uuid7.NewMsSqlUniqueIdentifier().ToString();
-                    break;
-                }
+            {
+                UIDString = Medo.Uuid7.NewMsSqlUniqueIdentifier().ToString();
+                break;
+            }
             case UIDHelperType.ULID:
-                {
-                    UIDString = Ulid.NewUlid().ToString();
-                    break;
-                }
+            {
+                UIDString = Ulid.NewUlid().ToString();
+                break;
+            }
         }
+        UIDStringBuilder.Append(UIDString + "\n");
+    }
 
-        Console.WriteLine($"{MyChoice.UIDType} #{i + 1}: \n{UIDString}\n");
+    string? fileNameSansExtension = "";
+    Console.WriteLine();
+    Console.WriteLine($"Please enter the name of the text file to save the generated {MyChoice.UIDType}s to: ");
+    Console.WriteLine();
+
+    fileNameSansExtension = Console.ReadLine();
+
+    using (StreamWriter UIDWriter = new(fileNameSansExtension + ".txt", false))
+    {
+        UIDWriter.Flush();
+        UIDWriter.Write(UIDStringBuilder.ToString());
     }
 }
 
 Console.WriteLine("Press any key to exit:");
 Console.ReadKey();
 
-Thread.Sleep(2500);
+Thread.Sleep(750);
