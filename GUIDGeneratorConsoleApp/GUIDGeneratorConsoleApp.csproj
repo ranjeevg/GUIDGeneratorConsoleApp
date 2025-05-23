@@ -16,6 +16,7 @@
     <Folder Include="bin\Debug\net8.0\Generated UID files\" />
     <Folder Include="bin\Debug\net9.0\Generated UID files\" />
     <Folder Include="bin\Release\net9.0\Generated UID files\" />
+    <Folder Include="Generated UID files\" />
   </ItemGroup>
 
 </Project>
