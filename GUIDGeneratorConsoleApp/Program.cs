@@ -86,7 +86,7 @@ else
 
     fileNameSansExtension = Console.ReadLine();
 
-    using (StreamWriter UIDWriter = new("Generated UID files\\" + fileNameSansExtension + ".txt", false))
+    using (StreamWriter UIDWriter = new(fileNameSansExtension + ".txt", false))
     {
         UIDWriter.Flush();
         UIDWriter.Write(UIDStringBuilder.ToString());
